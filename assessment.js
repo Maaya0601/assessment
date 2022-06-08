@@ -35,15 +35,28 @@ assessmentButton.onclick =  () => {
     script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
     tweetdivided.appendChild(script);
 
-    // 診断結果を表示させる
-    const header = document.createElement('h3');
-    header.innerText = '診断結果';
-    resultDivided.appendChild(header);
+    // headerDivided の作成
+    resultDivided.innerText = "";
+    const headerDivided = document.createElement('div');
+    headerDivided.setAttribute('class', 'card-header');
+    headerDivided.innerText = '診断結果';
+
+    // bodyDivided の作成
+    const bodyDivided = document.createElement('div');
+    bodyDivided.setAttribute('class', 'card-body');
 
     const paragraph = document.createElement('p');
-    
+    paragraph.setAttribute('class', 'card-text');
     paragraph.innerText = result;
-    resultDivided.appendChild(paragraph);
+    bodyDivided.appendChild(paragraph);
+
+    // resultDivided に Bootstrap のスタイルを適用する
+    resultDivided.setAttribute('class', 'card');
+    resultDivided.setAttribute('style', 'max-width: 700px;');
+
+    // headerDivided と bodyDivided を resultDivided に差し込む
+    resultDivided.appendChild(headerDivided);
+    resultDivided.appendChild(bodyDivided);
 }
 
 const answers = [
